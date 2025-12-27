@@ -1,0 +1,52 @@
+import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+const axiosInstance = axios.create({
+    baseURL: API_URL,
+    timeout: parseInt(process.env.REACT_APP_API_TIMEOUT) || 10000,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
+
+// Request interceptor - Add token to requests
+axiosInstance.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+// Response interceptor - Handle errors
+axiosInstance.interceptors.response.use(
+    (response) => {
+        return response.data;
+    },
+    (error) => {
+        if (error.response) {
+            // Server responded with error status
+            if (error.response.status === 401) {
+                // Unauthorized - Clear token and redirect to login
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                window.location.href = '/login';
+            }
+            return Promise.reject(error.response.data);
+        } else if (error.request) {
+            // Request made but no response
+            return Promise.reject({ message: 'Không thể kết nối đến server' });
+        } else {
+            // Error in request setup
+            return Promise.reject({ message: error.message });
+        }
+    }
+);
+
+export default axiosInstance;

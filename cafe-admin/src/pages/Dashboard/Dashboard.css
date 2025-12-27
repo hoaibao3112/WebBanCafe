@@ -1,0 +1,187 @@
+.dashboard-page {
+    padding: 0;
+}
+
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e1e2d;
+    margin: 0 0 4px 0;
+}
+
+.page-header p {
+    color: #888;
+    margin: 0;
+}
+
+/* Statistics Cards */
+.stats-row {
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .ant-card-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-title {
+    color: #888;
+    font-size: 13px;
+    margin: 0 0 4px 0;
+}
+
+.stat-value .ant-statistic-content {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e1e2d;
+}
+
+.stat-value .ant-statistic-content-suffix {
+    font-size: 14px;
+    font-weight: 400;
+    color: #888;
+    margin-left: 4px;
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.stat-change.positive {
+    color: #52c41a;
+}
+
+.stat-change.negative {
+    color: #ff4d4f;
+}
+
+.stat-change .change-text {
+    color: #888;
+    margin-left: 4px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-card .ant-card-head {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dashboard-card .ant-card-head-title {
+    font-weight: 600;
+    color: #1e1e2d;
+}
+
+.dashboard-card .ant-card-extra a {
+    color: #ff6b6b;
+}
+
+/* Top Products */
+.top-products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.product-rank {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+}
+
+.product-item:nth-child(1) .product-rank {
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    color: #fff;
+}
+
+.product-item:nth-child(2) .product-rank {
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    color: #fff;
+}
+
+.product-item:nth-child(3) .product-rank {
+    background: linear-gradient(135deg, #cd7f32, #a0522d);
+    color: #fff;
+}
+
+.product-name {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.product-sales {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff6b6b;
+}
+
+/* Table Styles */
+.dashboard-card .ant-table {
+    font-size: 13px;
+}
+
+.dashboard-card .ant-table-thead > tr > th {
+    background: #fafafa;
+    font-weight: 600;
+    color: #555;
+}

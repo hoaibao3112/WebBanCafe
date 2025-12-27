@@ -1,0 +1,125 @@
+.promotion-management {
+    padding: 0;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e1e2d;
+    margin: 0 0 4px 0;
+}
+
+.page-header p {
+    color: #888;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    gap: 12px;
+}
+
+/* Filter Card */
+.filter-card {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.filter-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Table Card */
+.table-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Promo Name Cell */
+.promo-name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.promo-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.promo-code {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.copy-icon {
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+}
+
+.copy-icon:hover {
+    color: #ff6b6b;
+}
+
+/* Promo Value */
+.promo-value {
+    font-weight: 600;
+    color: #ff6b6b;
+}
+
+/* Period */
+.promo-period {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}
+
+.period-separator {
+    color: #ccc;
+}
+
+/* Usage Cell */
+.usage-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.usage-text {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Table Styles */
+.table-card .ant-table-thead > tr > th {
+    background: #fafafa;
+    font-weight: 600;
+    color: #555;
+}
+
+.table-card .ant-table-tbody > tr:hover > td {
+    background: #fff5f5;
+}
+
+/* Modal */
+.ant-modal-header {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 24px;
+}
+
+.ant-modal-title {
+    font-weight: 600;
+}

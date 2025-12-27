@@ -1,0 +1,250 @@
+.customer-management {
+    padding: 0;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e1e2d;
+    margin: 0 0 4px 0;
+}
+
+.page-header p {
+    color: #888;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    gap: 12px;
+}
+
+/* Summary Cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.summary-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.summary-card .ant-card-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+}
+
+.summary-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.summary-icon.bronze {
+    background: linear-gradient(135deg, #cd7f32, #a0522d);
+    color: #fff;
+}
+
+.summary-icon.silver {
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    color: #fff;
+}
+
+.summary-icon.gold {
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    color: #333;
+}
+
+.summary-icon.platinum {
+    background: linear-gradient(135deg, #e5e4e2, #b8b8b8);
+    color: #333;
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e1e2d;
+}
+
+.summary-label {
+    font-size: 13px;
+    color: #888;
+}
+
+/* Filter Card */
+.filter-card {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.filter-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Table Card */
+.table-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Customer Cell */
+.customer-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.customer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.customer-id {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Contact Cell */
+.contact-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.contact-icon {
+    color: #888;
+}
+
+/* Order Count */
+.order-count {
+    font-weight: 500;
+}
+
+/* Total Spent */
+.total-spent {
+    font-weight: 600;
+    color: #ff6b6b;
+}
+
+/* Points */
+.points {
+    font-weight: 500;
+    color: #722ed1;
+}
+
+/* Table Styles */
+.table-card .ant-table-thead > tr > th {
+    background: #fafafa;
+    font-weight: 600;
+    color: #555;
+}
+
+.table-card .ant-table-tbody > tr:hover > td {
+    background: #fff5f5;
+}
+
+/* Modal Styles */
+.customer-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.customer-header-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.customer-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.stat-icon {
+    font-size: 24px;
+    color: #ff6b6b;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e1e2d;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .summary-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .customer-stats {
+        flex-direction: column;
+    }
+}

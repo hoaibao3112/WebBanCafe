@@ -1,0 +1,100 @@
+/* Customer App Global Styles */
+
+/* Reset and base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Selection color */
+::selection {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+/* Focus styles */
+*:focus-visible {
+    outline: 2px solid #ff6b6b;
+    outline-offset: 2px;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Image defaults */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Button reset */
+button {
+    font-family: inherit;
+}
+
+/* Link defaults */
+a {
+    color: inherit;
+}
+
+/* Ant Design overrides for customer pages */
+.ant-pagination-item-active {
+    border-color: #ff6b6b !important;
+    background: #ff6b6b !important;
+}
+
+.ant-pagination-item-active a {
+    color: #fff !important;
+}
+
+.ant-pagination-item:hover {
+    border-color: #ff6b6b !important;
+}
+
+.ant-pagination-item:hover a {
+    color: #ff6b6b !important;
+}
+
+.ant-slider-track {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53) !important;
+}
+
+.ant-slider-handle::after {
+    box-shadow: 0 0 0 2px #ff6b6b !important;
+}
+
+.ant-tabs-tab:hover {
+    color: #ff6b6b !important;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #ff6b6b !important;
+}
+
+.ant-tabs-ink-bar {
+    background: #ff6b6b !important;
+}
+
+.ant-badge-count {
+    background: #ff6b6b !important;
+}
