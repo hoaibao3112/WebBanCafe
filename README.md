@@ -147,7 +147,7 @@ npm test
 
 ### Frontend (Vercel/Netlify)
 ```bash
-cd cafe-frontend
+cd cafe-frontenda
 npm run build # Deploy the 'build' folder
 ```
 
@@ -371,4 +371,5 @@ This project is licensed under the MIT License.
 **Made with ☕ and ❤️**
 #   W e b B a n C a f e 
  
+
  
