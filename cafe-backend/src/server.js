@@ -40,15 +40,17 @@ app.get('/health', (req, res) => {
     });
 });
 
-// API Routes (to be implemented)
-// app.use('/api/auth', require('./routes/auth.routes'));
-// app.use('/api/products', require('./routes/product.routes'));
-// app.use('/api/materials', require('./routes/material.routes'));
-// app.use('/api/warehouse', require('./routes/warehouse.routes'));
-// app.use('/api/sales', require('./routes/sale.routes'));
-// app.use('/api/users', require('./routes/user.routes'));
-// app.use('/api/roles', require('./routes/role.routes'));
-// app.use('/api/dashboard', require('./routes/dashboard.routes'));
+// API Routes
+app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/admin/staff', require('./routes/staff.routes'));
+app.use('/api/admin/accounts', require('./routes/account.routes'));
+app.use('/api/admin/products', require('./routes/product.routes'));
+app.use('/api/admin/materials', require('./routes/material.routes'));
+app.use('/api/admin/warehouse', require('./routes/warehouse.routes'));
+app.use('/api/admin/receipts', require('./routes/receipt.routes'));
+app.use('/api/admin/revenue', require('./routes/revenue.routes'));
+app.use('/api/admin/promotions', require('./routes/promotion.routes'));
+app.use('/api/admin/dashboard', require('./routes/dashboard.routes'));
 
 // 404 handler
 app.use((req, res) => {
@@ -60,12 +62,19 @@ app.use((req, res) => {
 
 // Global error handler
 app.use((err, req, res, next) => {
-    console.error('Error:', err.stack);
+    console.error('Error:', err);
 
-    res.status(err.status || 500).json({
+    // Handle custom errors
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal server error';
+
+    res.status(statusCode).json({
         success: false,
-        message: err.message || 'Internal server error',
-        ...(config.env === 'development' && { stack: err.stack })
+        message,
+        ...(config.env === 'development' && {
+            stack: err.stack,
+            error: err
+        })
     });
 });
 
@@ -77,8 +86,12 @@ const startServer = async () => {
         // Test database connection
         await testConnection();
 
-        // Sync database models (in development)
-        // await require('./models').sequelize.sync({ alter: true });
+        // Sync database models (in development only)
+        if (config.env === 'development') {
+            console.log('⚙️  Syncing database models...');
+            await require('./models').sequelize.sync({ alter: false });
+            console.log('✅ Models synced successfully');
+        }
 
         app.listen(PORT, () => {
             console.log(`🚀 Server running on port ${PORT}`);

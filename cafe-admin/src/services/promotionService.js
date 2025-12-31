@@ -1,30 +1,35 @@
-import api from './api';
+import apiClient from './apiClient';
 
-export const promotionService = {
-    getPromotions: async (params = {}) => {
-        const response = await api.get('/promotions', { params });
+const promotionService = {
+    getAllPromotions: async () => {
+        const response = await apiClient.get('/admin/promotions');
         return response.data;
     },
 
     getPromotionById: async (id) => {
-        const response = await api.get(`/promotions/${id}`);
+        const response = await apiClient.get(`/admin/promotions/${id}`);
         return response.data;
     },
 
-    createPromotion: async (promotionData) => {
-        const response = await api.post('/promotions', promotionData);
+    createPromotion: async (data) => {
+        const response = await apiClient.post('/admin/promotions', data);
         return response.data;
     },
 
-    updatePromotion: async (id, promotionData) => {
-        const response = await api.put(`/promotions/${id}`, promotionData);
+    updatePromotion: async (id, data) => {
+        const response = await apiClient.put(`/admin/promotions/${id}`, data);
         return response.data;
     },
 
     deletePromotion: async (id) => {
-        const response = await api.delete(`/promotions/${id}`);
+        const response = await apiClient.delete(`/admin/promotions/${id}`);
         return response.data;
     },
+
+    updateStatus: async (id, status) => {
+        const response = await apiClient.put(`/admin/promotions/${id}/status`, { status });
+        return response.data;
+    }
 };
 
 export default promotionService;

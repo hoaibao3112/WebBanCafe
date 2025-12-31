@@ -1,11 +1,22 @@
-// Placeholder for material routes
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+const materialController = require('../controllers/material.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
+const { requireStaff } = require('../middlewares/permission.middleware');
 
-// GET /api/materials - Get all materials
-// GET /api/materials/:id - Get material by ID
-// POST /api/materials - Create material
-// PUT /api/materials/:id - Update material
-// DELETE /api/materials/:id - Delete material
+/**
+ * Material Management Routes
+ * @prefix /api/admin/materials
+ * @middleware authMiddleware, requireStaff
+ */
+
+router.use(authMiddleware);
+router.use(requireStaff);
+
+router.get('/low-stock/list', materialController.getLowStock);
+router.post('/', materialController.createMaterial);
+router.get('/', materialController.getAllMaterials);
+router.get('/:id', materialController.getMaterialById);
+router.put('/:id', materialController.updateMaterial);
+router.delete('/:id', materialController.deleteMaterial);
 
 module.exports = router;

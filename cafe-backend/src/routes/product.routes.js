@@ -1,12 +1,23 @@
-// Placeholder for product routes
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+const productController = require('../controllers/product.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
+const { requireStaff } = require('../middlewares/permission.middleware');
 
-// GET /api/products - Get all products
-// GET /api/products/:id - Get product by ID
-// POST /api/products - Create product
-// PUT /api/products/:id - Update product
-// DELETE /api/products/:id - Delete product
-// GET /api/products/:id/recipe - Get product recipe
+/**
+ * Product Management Routes
+ * @prefix /api/admin/products
+ * @middleware authMiddleware, requireStaff
+ */
+
+router.use(authMiddleware);
+router.use(requireStaff);
+
+router.get('/categories/list', productController.getCategories);
+router.post('/', productController.createProduct);
+router.get('/', productController.getAllProducts);
+router.get('/:id', productController.getProductById);
+router.put('/:id', productController.updateProduct);
+router.delete('/:id', productController.deleteProduct);
+router.put('/:id/status', productController.updateStatus);
 
 module.exports = router;

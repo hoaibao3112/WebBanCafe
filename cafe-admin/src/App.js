@@ -1,48 +1,49 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import AdminLayout from './components/Layout/AdminLayout';
-import Login from './pages/Login/Login';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import MainLayout from './components/Layout/MainLayout';
+
+// Pages
+import Login from './pages/Auth/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
-import OrderManagement from './pages/OrderManagement/OrderManagement';
-import ProductManagement from './pages/ProductManagement/ProductManagement';
-import PromotionManagement from './pages/PromotionManagement/PromotionManagement';
-import CustomerManagement from './pages/CustomerManagement/CustomerManagement';
-import './App.css';
-
-// Simple auth check - replace with proper auth logic
-const isAuthenticated = () => {
-    return localStorage.getItem('adminToken') !== null;
-};
-
-const ProtectedRoute = ({ children }) => {
-    if (!isAuthenticated()) {
-        return <Navigate to="/login" replace />;
-    }
-    return children;
-};
+import StaffList from './pages/Staff/StaffList';
+import AccountList from './pages/Accounts/AccountList';
+import ProductList from './pages/Products/ProductList';
+import MaterialList from './pages/Materials/MaterialList';
+import ImportMaterials from './pages/Warehouse/ImportMaterials';
+import CurrentInventory from './pages/Warehouse/CurrentInventory';
+import CreateReceipt from './pages/Receipts/CreateReceipt';
+import PromotionList from './pages/Promotions/PromotionList';
 
 function App() {
     return (
-        <div className="App">
+        <AuthProvider>
             <Routes>
+                {/* Public route */}
                 <Route path="/login" element={<Login />} />
-                
-                <Route path="/*" element={
+
+                {/* Protected routes */}
+                <Route path="/" element={
                     <ProtectedRoute>
-                        <AdminLayout>
-                            <Routes>
-                                <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                                <Route path="/dashboard" element={<Dashboard />} />
-                                <Route path="/orders" element={<OrderManagement />} />
-                                <Route path="/products" element={<ProductManagement />} />
-                                <Route path="/promotions" element={<PromotionManagement />} />
-                                <Route path="/customers" element={<CustomerManagement />} />
-                            </Routes>
-                        </AdminLayout>
+                        <MainLayout />
                     </ProtectedRoute>
-                } />
+                }>
+                    <Route index element={<Dashboard />} />
+                    <Route path="staff" element={<StaffList />} />
+                    <Route path="accounts" element={<AccountList />} />
+                    <Route path="products" element={<ProductList />} />
+                    <Route path="materials" element={<MaterialList />} />
+                    <Route path="warehouse/import" element={<ImportMaterials />} />
+                    <Route path="warehouse/inventory" element={<CurrentInventory />} />
+                    <Route path="receipts" element={<CreateReceipt />} />
+                    <Route path="promotions" element={<PromotionList />} />
+                </Route>
+
+                {/* Redirect to dashboard */}
+                <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-        </div>
+        </AuthProvider>
     );
 }
 

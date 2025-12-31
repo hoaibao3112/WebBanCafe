@@ -1,13 +1,19 @@
-// Placeholder for authentication routes
-// This will be implemented in Phase 2
+const router = require('express').Router();
+const authController = require('../controllers/auth.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
 
-const express = require('express');
-const router = express.Router();
+/**
+ * Authentication Routes
+ * @prefix /api/auth
+ */
 
-// POST /api/auth/login
-// POST /api/auth/register
-// GET /api/auth/me
-// POST /api/auth/refresh
-// POST /api/auth/logout
+// Public routes
+router.post('/login', authController.login);
+router.post('/register', authController.register);
+
+// Protected routes
+router.get('/me', authMiddleware, authController.getMe);
+router.post('/refresh', authMiddleware, authController.refreshToken);
+router.post('/logout', authMiddleware, authController.logout);
 
 module.exports = router;
